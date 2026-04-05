@@ -14,10 +14,14 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan('dev'));
 
+const authRoutes = require('./src/routes/auth.routes');
+
 // Route Sederhana untuk Test
 app.get('/', (req, res) => {
     res.json({ message: 'Welcome to Kasir Cepat API!' });
 });
+
+app.use('/api/auth', authRoutes);
 
 // Server Listening
 app.listen(PORT, () => {
